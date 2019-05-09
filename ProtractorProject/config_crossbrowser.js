@@ -1,0 +1,23 @@
+//This header is for jasmine reports
+var HtmlReporter = require('protractor-beautiful-reporter');
+
+exports.config = {
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+  specs: ['NonAngular.js'],
+
+ // Performing cross browser testing 
+ multiCapabilities: [
+	  
+	  {'browserName': 'firefox'},
+	  {'browserName': 'chrome'},
+	  
+	  ],
+  
+// Below code is for jasmine reports  
+onPrepare: function() {
+  // Add a screenshot reporter and store screenshots to `/tmp/screenshots`:
+  jasmine.getEnv().addReporter(new HtmlReporter({
+     baseDirectory: 'tmp/screenshots'
+  }).getJasmine2Reporter());
+}
+};
